@@ -1,0 +1,40 @@
+version: '3'
+services:
+  mage:
+    image: mageai/mageai:latest
+    container_name: magic
+    depends_on:
+      - postgres
+    command: mage start magic
+    # env_file:
+    #   - .env
+    environment:
+      ENV: dev
+      POSTGRES_DB: mage
+      POSTGRES_USER: mage
+      POSTGRES_PASSWORD: mage123!
+      POSTGRES_HOST: localhost
+      PG_HOST_PORT: 2345
+    ports:
+      - 6789:6789
+    volumes:
+      - /data/mage:/home/src/
+    restart: on-failure:5
+  
+  postgres:
+    image: postgres:14
+    restart: on-failure
+    container_name: postgres-magic
+    build:
+      context: ./db
+    # env_file:
+    #   - .env
+    environment:
+      POSTGRES_DB: mage
+      POSTGRES_USER: mage
+      POSTGRES_PASSWORD: mage123!
+    ports:
+      - 2345:5432
+    volumes:
+      - /data/mage/postgres_data/:/var/lib/postgresql/data
+
