@@ -1,1 +1,0 @@
-{"ID": "int64", "Waktu": "str", "Suhu_Udara_Min": "float64", "Suhu_Udara_Max": "float64", "Kelembapan_Min": "float64", "Kelembapan_Max": "float64", "Kelembapan_Dalam": "int64", "Suhu_Udara_Dalam": "int64", "Cuaca_code": "int64", "Arah_Angin": "str", "Kecepatan_Angin": "int64"}
