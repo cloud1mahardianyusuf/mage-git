@@ -18,7 +18,7 @@ services:
     ports:
       - 6789:6789
     volumes:
-      - /data/mage:/home/src/
+      - /data/mage-workflow/mage_data:/home/src/
     restart: on-failure:5
   
   postgres:
@@ -36,5 +36,6 @@ services:
     ports:
       - 2345:5432
     volumes:
-      - /data/mage/postgres_data/:/var/lib/postgresql/data
+      - /data/mage-workflow/postgres_data:/var/lib/postgresql/data
+    restart: on-failure:5
 
